@@ -1,1 +1,1676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Professional English M019 — Unit 5</title>
 
+<style>
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#f2f8ff;
+  color:#1f2937;
+  line-height:1.6;
+}
+
+body.protected{
+  user-select:none;
+}
+
+.hero{
+  background:
+    radial-gradient(circle at top left, rgba(255,255,255,.25), transparent 35%),
+    linear-gradient(135deg,#0f172a,#0369a1,#0d9488);
+  color:white;
+  padding:56px 20px 48px;
+  text-align:center;
+}
+
+.hero h1{
+  margin:0;
+  font-size:38px;
+  letter-spacing:.3px;
+}
+
+.hero p{
+  margin:12px auto 0;
+  max-width:780px;
+  font-size:18px;
+  opacity:.96;
+}
+
+.unit-nav{
+  position:sticky;
+  top:0;
+  z-index:50;
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+  padding:14px 16px;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid #dbeafe;
+  box-shadow:0 8px 20px rgba(15,23,42,.08);
+}
+
+.unit-nav a{
+  text-decoration:none;
+  font-weight:800;
+  color:#075985;
+  background:#e0f2fe;
+  padding:10px 16px;
+  border-radius:999px;
+  transition:.2s;
+}
+
+.unit-nav a:hover{
+  background:#0284c7;
+  color:white;
+  transform:translateY(-1px);
+}
+
+.wrapper{
+  max-width:1180px;
+  margin:34px auto 70px;
+  padding:0 18px;
+}
+
+.unit-card{
+  background:white;
+  border-radius:26px;
+  padding:28px;
+  margin-bottom:34px;
+  box-shadow:0 18px 45px rgba(15,23,42,.12);
+  border:1px solid rgba(14,165,233,.15);
+  scroll-margin-top:90px;
+}
+
+.unit-header{
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  align-items:flex-start;
+  flex-wrap:wrap;
+  border-bottom:1px solid #e0f2fe;
+  padding-bottom:18px;
+  margin-bottom:22px;
+}
+
+.unit-header h2{
+  margin:0;
+  color:#075985;
+  font-size:27px;
+}
+
+.badge{
+  display:inline-block;
+  background:#e0f2fe;
+  color:#0369a1;
+  font-weight:800;
+  border-radius:999px;
+  padding:7px 13px;
+  font-size:13px;
+}
+
+.unit-description{
+  background:#f0f9ff;
+  border:1px solid #bae6fd;
+  border-left:6px solid #0284c7;
+  padding:15px 17px;
+  border-radius:16px;
+  margin-bottom:22px;
+  color:#374151;
+}
+
+.question{
+  background:#ffffff;
+  border:1px solid #e5e7eb;
+  border-radius:20px;
+  padding:20px;
+  margin:18px 0;
+  transition:.2s;
+}
+
+.question:hover{
+  border-color:#7dd3fc;
+  box-shadow:0 10px 28px rgba(14,165,233,.10);
+}
+
+.qtype{
+  display:inline-block;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.2px;
+  color:#0369a1;
+  background:#e0f2fe;
+  padding:5px 10px;
+  border-radius:999px;
+  margin-bottom:10px;
+}
+
+.question-title{
+  font-weight:800;
+  font-size:17px;
+  margin-bottom:12px;
+  color:#111827;
+}
+
+.option{
+  display:block;
+  padding:10px 12px;
+  margin:7px 0;
+  border-radius:13px;
+  cursor:pointer;
+  border:1px solid #f1f5f9;
+  background:#fafafa;
+}
+
+.option:hover{
+  background:#f0f9ff;
+  border-color:#bae6fd;
+}
+
+.option input{
+  margin-right:8px;
+}
+
+.btn{
+  background:linear-gradient(135deg,#0284c7,#0d9488);
+  color:white;
+  border:none;
+  border-radius:16px;
+  padding:14px 24px;
+  font-size:16px;
+  font-weight:800;
+  cursor:pointer;
+  margin-top:18px;
+  box-shadow:0 10px 24px rgba(2,132,199,.24);
+}
+
+.btn:hover{
+  transform:translateY(-1px);
+  box-shadow:0 14px 30px rgba(2,132,199,.32);
+}
+
+.result{
+  margin-top:26px;
+}
+
+.summary{
+  background:#ecfdf5;
+  border:1px solid #a7f3d0;
+  border-left:6px solid #10b981;
+  border-radius:20px;
+  padding:20px;
+  margin-bottom:18px;
+}
+
+.summary h3{
+  margin:0 0 6px;
+  font-size:24px;
+  color:#047857;
+}
+
+.answer-card{
+  border-radius:18px;
+  padding:17px;
+  margin:13px 0;
+  border:1px solid #e5e7eb;
+}
+
+.correct{
+  background:#ecfdf5;
+  border-color:#6ee7b7;
+}
+
+.wrong{
+  background:#fff1f2;
+  border-color:#fecdd3;
+}
+
+.correct-text{
+  color:#047857;
+  font-weight:800;
+}
+
+.wrong-text{
+  color:#be123c;
+  font-weight:800;
+}
+
+.explain{
+  margin-top:9px;
+  font-size:15px;
+}
+
+.source{
+  display:inline-block;
+  margin-top:8px;
+  color:#6b7280;
+  font-size:13px;
+}
+
+.footer{
+  text-align:center;
+  color:#6b7280;
+  font-size:14px;
+  margin-top:38px;
+}
+
+@media(max-width:720px){
+  .hero h1{
+    font-size:28px;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  .unit-card{
+    padding:20px;
+    border-radius:20px;
+  }
+
+  .unit-nav a{
+    padding:9px 13px;
+    font-size:14px;
+  }
+}
+</style>
+</head>
+
+<body class="protected">
+
+<section class="hero">
+  <h1>Professional English M019</h1>
+  <p>Unit 5 — Kazakhstan in the Information Space</p>
+</section>
+
+<nav class="unit-nav">
+  <a href="#unit51-section">Unit 5.1</a>
+  <a href="#unit52-section">Unit 5.2</a>
+</nav>
+
+<main class="wrapper">
+
+<section class="unit-card" id="unit51-section">
+  <div class="unit-header">
+    <div>
+      <h2>Unit 5.1 — Smart-Education and e-Learning Technologies</h2>
+      <p class="unit-description">
+        Topic: smart education, e-learning, distance learning, MOOC, MOODLE, LMS, online learning, educational technologies.
+      </p>
+    </div>
+    <span class="badge">40 questions</span>
+  </div>
+
+  <div id="quiz-unit51"></div>
+  <button class="btn" onclick="checkUnit('unit51')">Show result / Показать результат</button>
+  <div id="result-unit51" class="result"></div>
+</section>
+
+<section class="unit-card" id="unit52-section">
+  <div class="unit-header">
+    <div>
+      <h2>Unit 5.2 — New Media, Gen C, Virtual Reality and Digital Culture</h2>
+      <p class="unit-description">
+        Topic: Gen C, YouTube generation, virtual reality, children and technology, digital culture, visual culture, media literacy.
+      </p>
+    </div>
+    <span class="badge">40 questions</span>
+  </div>
+
+  <div id="quiz-unit52"></div>
+  <button class="btn" onclick="checkUnit('unit52')">Show result / Показать результат</button>
+  <div id="result-unit52" class="result"></div>
+</section>
+
+<div class="footer">
+  © @elnazm_ln — Educational material. Copying, resale and redistribution are not allowed.
+</div>
+
+</main>
+
+<script>
+const DATA = {
+
+unit51:{
+title:"Unit 5.1 — Smart-Education and e-Learning Technologies",
+questions:[
+{
+type:"single",
+q:"1. Smart Education mainly refers to:",
+options:[
+"the use of advanced technologies to improve learning",
+"education without teachers",
+"only traditional blackboard teaching",
+"learning without communication",
+"education without digital tools"
+],
+answers:[0],
+ru:"Smart Education означает использование современных технологий для улучшения процесса обучения.",
+kz:"Smart Education дегеніміз — оқу үдерісін жақсарту үшін заманауи технологияларды қолдану.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"single",
+q:"2. In Sejong City’s Smart Education initiative, students are expected to use:",
+options:[
+"tablet PCs in class",
+"only paper notebooks",
+"only chalk and blackboards",
+"no digital tools",
+"only printed dictionaries"
+],
+answers:[0],
+ru:"В инициативе Smart Education в городе Седжон ученики используют планшеты как часть учебного процесса.",
+kz:"Седжон қаласындағы Smart Education жобасында оқушылар сабақ кезінде планшеттерді оқу құралы ретінде қолданады.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"single",
+q:"3. A smart pad in the classroom allows:",
+options:[
+"direct communication between teacher and students",
+"only offline reading",
+"no interaction",
+"only handwriting practice",
+"only entertainment"
+],
+answers:[0],
+ru:"Smart pad обеспечивает прямую коммуникацию между учителем и учениками.",
+kz:"Smart pad мұғалім мен оқушылардың тікелей байланыс жасауына мүмкіндік береді.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"single",
+q:"4. One benefit of Smart Education is:",
+options:[
+"enhanced interaction between instructors and students",
+"complete absence of feedback",
+"less communication",
+"rejection of technology",
+"removal of learning tools"
+],
+answers:[0],
+ru:"Одним преимуществом Smart Education является усиленное взаимодействие между преподавателями и учащимися.",
+kz:"Smart Education жүйесінің бір артықшылығы — мұғалімдер мен оқушылар арасындағы өзара әрекетті күшейту.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"single",
+q:"5. Electronic student IDs in Smart Education can be used to:",
+options:[
+"send attendance information to parents",
+"replace all teachers",
+"write essays automatically",
+"remove all exams",
+"block learning"
+],
+answers:[0],
+ru:"Электронные ID учеников могут фиксировать приход в школу и отправлять информацию родителям.",
+kz:"Оқушылардың электрондық ID карталары олардың мектепке келгенін тіркеп, бұл ақпаратты ата-аналарға жіберуге қолданылады.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"multiple",
+q:"6. Smart Education may involve:",
+options:[
+"tablet PCs",
+"large classroom screens",
+"electronic student IDs",
+"only handwritten letters",
+"absence of digital tools"
+],
+answers:[0,1,2],
+ru:"Smart Education может включать планшеты, большие экраны, электронные ID и другие цифровые инструменты.",
+kz:"Smart Education жүйесіне планшеттер, үлкен экрандар, электрондық ID карталар және басқа да цифрлық құралдар кіруі мүмкін.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"single",
+q:"7. CCTV cameras in schools may help to:",
+options:[
+"discourage bullying and intimidating behaviour",
+"replace all classes",
+"teach grammar automatically",
+"remove all teachers",
+"stop education"
+],
+answers:[0],
+ru:"Камеры CCTV могут помогать предотвращать буллинг и запугивающее поведение.",
+kz:"Мектептегі бейнебақылау камералары буллинг пен қорқыту әрекеттерін азайтуға көмектеседі.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"single",
+q:"8. Cutting-edge technology means:",
+options:[
+"very advanced and modern technology",
+"old-fashioned technology",
+"broken technology",
+"technology used only in the past",
+"non-digital tools"
+],
+answers:[0],
+ru:"Cutting-edge technology означает очень современную и передовую технологию.",
+kz:"Cutting-edge technology дегеніміз — өте жаңа, дамыған және озық технология.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"single",
+q:"9. The idiom “light years ahead” means:",
+options:[
+"far more advanced than others",
+"physically far in space only",
+"very old",
+"very slow",
+"completely useless"
+],
+answers:[0],
+ru:"Light years ahead означает быть намного более развитым или продвинутым по сравнению с другими.",
+kz:"Light years ahead тіркесі басқалармен салыстырғанда әлдеқайда алда, дамыған деген мағынаны білдіреді.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"single",
+q:"10. “Time will tell” means:",
+options:[
+"the result will become clear in the future",
+"time is a machine",
+"nobody can learn",
+"the answer is already impossible",
+"technology has ended"
+],
+answers:[0],
+ru:"Time will tell означает, что результат станет понятен со временем.",
+kz:"Time will tell тіркесі нәтиже уақыт өте келе белгілі болады деген мағынаны білдіреді.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"single",
+q:"11. To invent means:",
+options:[
+"to make, design or think of a new thing",
+"to copy without change",
+"to forget information",
+"to destroy a tool",
+"to refuse innovation"
+],
+answers:[0],
+ru:"To invent означает создать, придумать или разработать что-то новое.",
+kz:"To invent дегеніміз — жаңа нәрсені ойлап табу, жасау немесе құрастыру.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"single",
+q:"12. To discover means:",
+options:[
+"to find something",
+"to hide information",
+"to stop research",
+"to copy a text",
+"to delete data"
+],
+answers:[0],
+ru:"To discover означает найти или обнаружить что-либо.",
+kz:"To discover дегеніміз — бір нәрсені табу немесе анықтау.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"single",
+q:"13. To analyze means:",
+options:[
+"to examine something carefully in order to understand it",
+"to ignore details",
+"to memorize without thinking",
+"to delete information",
+"to refuse explanation"
+],
+answers:[0],
+ru:"To analyze означает внимательно изучить что-либо, чтобы понять его структуру или смысл.",
+kz:"To analyze дегеніміз — бір нәрсені түсіну үшін оны мұқият зерттеу және талдау.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"single",
+q:"14. To conclude means:",
+options:[
+"to decide something after considering information",
+"to begin without thinking",
+"to avoid a decision",
+"to copy a result",
+"to remove evidence"
+],
+answers:[0],
+ru:"To conclude означает сделать вывод после рассмотрения информации.",
+kz:"To conclude дегеніміз — ақпаратты қарастырып болғаннан кейін қорытынды жасау.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"single",
+q:"15. To patent means:",
+options:[
+"to obtain a legal right for an invention or product",
+"to lose ownership",
+"to avoid innovation",
+"to borrow without permission",
+"to delete a product"
+],
+answers:[0],
+ru:"To patent означает получить юридическое право на изобретение или продукт.",
+kz:"To patent дегеніміз — өнертабысқа немесе өнімге заңды құқық алу.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"single",
+q:"16. E-learning can be defined as:",
+options:[
+"the use of electronic media to educate or train learners",
+"learning without any technology",
+"only face-to-face teaching",
+"only printed textbooks",
+"learning without feedback"
+],
+answers:[0],
+ru:"E-learning — это использование электронных медиа для обучения или подготовки учащихся.",
+kz:"E-learning дегеніміз — білім алушыларды оқыту немесе дайындау үшін электрондық құралдарды пайдалану.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"multiple",
+q:"17. E-learning may use:",
+options:[
+"computers",
+"tablets",
+"phones",
+"only chalk",
+"only printed posters"
+],
+answers:[0,1,2],
+ru:"E-learning может использовать компьютеры, планшеты, телефоны и другие электронные устройства.",
+kz:"E-learning компьютер, планшет, телефон сияқты электрондық құрылғылар арқылы жүзеге асады.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"single",
+q:"18. A basic e-learning course may include:",
+options:[
+"online slides, navigation buttons and quizzes",
+"only face-to-face oral exams",
+"only printed letters",
+"no digital content",
+"only classroom chalk"
+],
+answers:[0],
+ru:"Базовый e-learning курс может включать онлайн-слайды, кнопки навигации и тесты.",
+kz:"Қарапайым электрондық курс онлайн-слайдтардан, навигация батырмаларынан және тест тапсырмаларынан тұруы мүмкін.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"single",
+q:"19. A software simulation in e-learning can:",
+options:[
+"demonstrate steps through an application",
+"replace all human thinking",
+"teach only handwriting",
+"remove interaction",
+"block online learning"
+],
+answers:[0],
+ru:"Software simulation может показывать последовательность действий в приложении.",
+kz:"Бағдарламалық симуляция қосымшада орындалатын әрекеттердің ретін көрсетуге мүмкіндік береді.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"single",
+q:"20. Asynchronous e-learning means:",
+options:[
+"learning without a fixed common time for everyone",
+"everyone must study at the same exact moment",
+"learning is impossible online",
+"only live lectures",
+"only classroom learning"
+],
+answers:[0],
+ru:"Асинхронное e-learning означает обучение без обязательного общего времени для всех участников.",
+kz:"Асинхронды электрондық оқыту дегеніміз — барлық қатысушылардың бір уақытта қатысуын талап етпейтін оқу түрі.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"single",
+q:"21. Synchronous e-learning means:",
+options:[
+"learning that happens at the same time through live tools",
+"learning without communication",
+"learning only from printed books",
+"learning without internet",
+"learning after the course is deleted"
+],
+answers:[0],
+ru:"Синхронное e-learning означает обучение, которое происходит одновременно для участников, например через веб-конференции или чат.",
+kz:"Синхронды электрондық оқыту дегеніміз — қатысушылардың бір уақытта онлайн құралдар арқылы білім алуы.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"single",
+q:"22. One value of e-learning is that it has:",
+options:[
+"global reach",
+"only local access",
+"no flexibility",
+"no connection with technology",
+"no educational value"
+],
+answers:[0],
+ru:"Одно из преимуществ e-learning — глобальный охват: курс можно разместить онлайн и открыть доступ людям из разных стран.",
+kz:"E-learning жүйесінің бір артықшылығы — оның ғаламдық қолжетімділігі, яғни курсқа әртүрлі елдерден қатысуға болады.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"multiple",
+q:"23. E-learning can reduce costs because it can reduce:",
+options:[
+"travel expenses",
+"repeated face-to-face training",
+"physical meeting costs",
+"all learning needs",
+"all teacher responsibilities"
+],
+answers:[0,1,2],
+ru:"E-learning может снижать расходы, потому что уменьшает необходимость поездок, повторных очных занятий и физических встреч.",
+kz:"E-learning жол жүру шығындарын, қайталанатын офлайн сабақтарды және жиналыс шығындарын азайта алады.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"single",
+q:"24. Mobile learning is also called:",
+options:[
+"mLearning",
+"storyboarding",
+"SCORM",
+"508 compliance",
+"formal distribution"
+],
+answers:[0],
+ru:"Mobile learning также называется mLearning и означает обучение через смартфоны или планшеты.",
+kz:"Mobile learning немесе mLearning дегеніміз — смартфон мен планшет арқылы оқу.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"single",
+q:"25. Blended learning combines:",
+options:[
+"classroom training with web-based online training",
+"only exams and grades",
+"only sports and music",
+"only printed books and handwriting",
+"only offline lectures"
+],
+answers:[0],
+ru:"Blended learning сочетает традиционное аудиторное обучение с онлайн-обучением.",
+kz:"Аралас оқыту дәстүрлі аудиториялық оқытуды веб-негізіндегі онлайн оқытумен біріктіреді.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"single",
+q:"26. Social learning involves:",
+options:[
+"collaboration, brainstorming and discussion with others",
+"studying in complete isolation",
+"memorizing without interaction",
+"refusing teamwork",
+"only watching videos silently"
+],
+answers:[0],
+ru:"Social learning включает сотрудничество, мозговой штурм и обсуждение с другими людьми.",
+kz:"Әлеуметтік оқыту басқа адамдармен бірлесіп жұмыс істеуді, идея талқылауды және пікір алмасуды қамтиды.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"single",
+q:"27. Gamification means:",
+options:[
+"using game elements to make learning engaging",
+"removing interaction from learning",
+"turning education into punishment",
+"using only lectures",
+"avoiding feedback"
+],
+answers:[0],
+ru:"Gamification означает использование игровых элементов, чтобы сделать обучение более интересным и вовлекающим.",
+kz:"Геймификация дегеніміз — оқуды қызықты әрі тартымды ету үшін ойын элементтерін қолдану.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"multiple",
+q:"28. Gamification may include:",
+options:[
+"rewards",
+"levels",
+"positive feedback",
+"absence of motivation",
+"no learner activity"
+],
+answers:[0,1,2],
+ru:"Gamification может включать награды, уровни, титулы и положительную обратную связь.",
+kz:"Геймификация марапаттарды, деңгейлерді, атақтарды және жағымды кері байланысты қамтуы мүмкін.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"single",
+q:"29. Storyboarding in e-learning helps developers:",
+options:[
+"outline courses before development begins",
+"delete course structure",
+"avoid planning",
+"remove visuals",
+"stop content creation"
+],
+answers:[0],
+ru:"Storyboarding помогает разработчикам заранее спланировать структуру курса, тексты, визуальные элементы и задания.",
+kz:"Storyboarding курс әзірлеушілеріне курстың құрылымын, мәтіндерін, көрнекі материалдарын және тапсырмаларын алдын ала жоспарлауға көмектеседі.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"single",
+q:"30. LMS stands for:",
+options:[
+"Learning Management System",
+"Language Memory Source",
+"Local Media Software",
+"Learning Motivation Skill",
+"Lecture Model Standard"
+],
+answers:[0],
+ru:"LMS означает Learning Management System — систему управления обучением.",
+kz:"LMS дегеніміз — Learning Management System, яғни оқытуды басқару жүйесі.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"single",
+q:"31. A Learning Management System is used to:",
+options:[
+"publish, manage, track and report online learning",
+"cook food in schools",
+"replace all knowledge",
+"print only paper books",
+"avoid assessment"
+],
+answers:[0],
+ru:"LMS используется для публикации курсов, управления обучением, отслеживания результатов и создания отчётов.",
+kz:"Оқытуды басқару жүйесі онлайн курстарды жариялау, басқару, нәтижелерді бақылау және есеп беру үшін қолданылады.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"single",
+q:"32. SME in e-learning stands for:",
+options:[
+"Subject Matter Expert",
+"Student Media Editor",
+"Smart Mobile Education",
+"School Management Exam",
+"Simple Moodle Exercise"
+],
+answers:[0],
+ru:"SME означает Subject Matter Expert — эксперт по содержанию или специалист в определённой области.",
+kz:"SME дегеніміз — белгілі бір пән немесе сала бойынша мазмұндық сарапшы.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"single",
+q:"33. A 508 compliant e-learning course means:",
+options:[
+"the course is accessible to learners with disabilities",
+"the course has exactly 508 slides",
+"the course is only for teachers",
+"the course cannot be opened online",
+"the course excludes accessibility"
+],
+answers:[0],
+ru:"508 compliant курс означает, что его содержание доступно для всех учащихся, включая людей с инвалидностью.",
+kz:"508 compliant курс дегеніміз — курс мазмұны барлық білім алушыларға, соның ішінде мүмкіндігі шектеулі адамдарға да қолжетімді болуы.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"single",
+q:"34. Tin Can API is important because it can:",
+options:[
+"collect data about learning experiences across technologies",
+"replace all teachers",
+"remove online tracking",
+"block mobile learning",
+"delete learner progress"
+],
+answers:[0],
+ru:"Tin Can API позволяет собирать данные о разных учебных действиях и опыте обучения через разные технологии.",
+kz:"Tin Can API әртүрлі технологиялар арқылы білім алушының оқу тәжірибесі туралы деректерді жинауға мүмкіндік береді.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"single",
+q:"35. Informal distribution of e-learning usually means:",
+options:[
+"learners can view content without formal tracking or scoring",
+"learners must always take an official exam",
+"every result is recorded in an LMS",
+"the course is forbidden online",
+"learning cannot be shared"
+],
+answers:[0],
+ru:"Informal distribution означает, что учащимся дают доступ к курсу без обязательного формального отслеживания или оценивания.",
+kz:"Бейресми тарату кезінде білім алушылар курс материалын көре алады, бірақ олардың нәтижелері міндетті түрде ресми түрде бақыланбайды немесе бағаланбайды.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"single",
+q:"36. Formal distribution of e-learning is needed when:",
+options:[
+"learner results must be tracked and recorded",
+"no one needs results",
+"the course has no learners",
+"content is only for entertainment",
+"learning is informal only"
+],
+answers:[0],
+ru:"Formal distribution нужна, когда необходимо отслеживать и записывать результаты учащихся.",
+kz:"Ресми тарату білім алушылардың нәтижелерін бақылау және тіркеу қажет болған жағдайда қолданылады.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"single",
+q:"37. Instructional design focuses on:",
+options:[
+"creating effective learning experiences",
+"only choosing colours",
+"removing learning objectives",
+"avoiding content quality",
+"making courses random"
+],
+answers:[0],
+ru:"Instructional design направлен на создание эффективного учебного опыта и правильную организацию содержания.",
+kz:"Instructional design тиімді оқу тәжірибесін құруға және оқу мазмұнын дұрыс ұйымдастыруға бағытталады.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"single",
+q:"38. A successful e-learning project requires:",
+options:[
+"good tools and solid instructional design",
+"only beautiful colours",
+"no learning objectives",
+"no course structure",
+"no learner feedback"
+],
+answers:[0],
+ru:"Успешный e-learning проект требует хороших инструментов и сильного instructional design.",
+kz:"Табысты электрондық оқыту жобасы жақсы құралдарды және сапалы оқу дизайнын қажет етеді.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"single",
+q:"39. MOOC stands for:",
+options:[
+"Massive Open Online Course",
+"Modern Offline Ordinary Class",
+"Mobile Open Office Code",
+"Media Online Official Certificate",
+"Main Optional Online Chat"
+],
+answers:[0],
+ru:"MOOC означает Massive Open Online Course — массовый открытый онлайн-курс.",
+kz:"MOOC дегеніміз — Massive Open Online Course, яғни көпшілікке арналған ашық онлайн курс.",
+source:"POFLIC, Unit 5.1"
+},
+{
+type:"single",
+q:"40. The main philosophy of MOOC is connected with:",
+options:[
+"open access to learning and knowledge sharing",
+"closing education to most people",
+"learning only for one classroom",
+"removing online participation",
+"avoiding community"
+],
+answers:[0],
+ru:"Основная философия MOOC связана с открытым доступом к обучению и обменом знаниями.",
+kz:"MOOC-тың негізгі идеясы — білімге ашық қолжетімділік беру және біліммен еркін бөлісу.",
+source:"POFLIC, Unit 5.1"
+}
+]
+},
+
+unit52:{
+title:"Unit 5.2 — New Media, Gen C, Virtual Reality and Digital Culture",
+questions:[  
+ {
+type:"single",
+q:"1. Gen C is called so because it thrives on:",
+options:[
+"Connection, Community, Creation and Curation",
+"Commerce, Chemistry and Climate only",
+"Control, Competition and Cash only",
+"Culture without technology",
+"Communication without media"
+],
+answers:[0],
+ru:"Gen C называется так, потому что эта группа строится вокруг связи, сообщества, создания контента и отбора информации.",
+kz:"Gen C осылай аталады, себебі бұл топ байланысқа, қауымдастыққа, контент жасауға және ақпаратты іріктеуге негізделеді.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"single",
+q:"2. Gen C is not a generation in the traditional sense because:",
+options:[
+"it is more a way of life than an age group",
+"it includes only elderly people",
+"it is based only on nationality",
+"it rejects technology",
+"it has no relation to culture"
+],
+answers:[0],
+ru:"Gen C — это не традиционное поколение по возрасту, а скорее образ жизни и поведения в цифровой культуре.",
+kz:"Gen C дәстүрлі жас ерекшелігіне негізделген ұрпақ емес, ол цифрлық мәдениеттегі өмір салты мен мінез-құлық үлгісі.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"multiple",
+q:"3. Gen C is characterized by:",
+options:[
+"connection",
+"community",
+"creation",
+"complete isolation",
+"rejection of online media"
+],
+answers:[0,1,2],
+ru:"Gen C характеризуется связью, сообществом, созданием контента и активным участием в цифровой среде.",
+kz:"Gen C байланыс, қауымдастық, контент жасау және цифрлық ортаға белсенді қатысу арқылы сипатталады.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"single",
+q:"4. Gen C wants:",
+options:[
+"their voices to be heard",
+"to avoid all communication",
+"to leave digital culture",
+"to stop creating content",
+"to reject communities"
+],
+answers:[0],
+ru:"Gen C активно участвует в цифровой культуре и хочет, чтобы их голос был услышан.",
+kz:"Gen C цифрлық мәдениетке белсенді қатысады және өз дауысының естілуін қалайды.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"single",
+q:"5. Gen C is motivated by:",
+options:[
+"honesty and integrity",
+"silence and isolation only",
+"fear of technology",
+"lack of community",
+"rejection of creativity"
+],
+answers:[0],
+ru:"В тексте Gen C описывается как группа, мотивированная честностью и целостностью.",
+kz:"Мәтінде Gen C адалдық пен тұтастықты бағалайтын топ ретінде сипатталады.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"single",
+q:"6. Technology in Gen C life is:",
+options:[
+"seamlessly integrated",
+"completely absent",
+"always rejected",
+"used only once a year",
+"unrelated to entertainment"
+],
+answers:[0],
+ru:"Технологии естественно и непрерывно встроены в жизнь Gen C.",
+kz:"Технология Gen C өміріне табиғи түрде және үздіксіз кірігіп кеткен.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"single",
+q:"7. Gen C connects:",
+options:[
+"across all screens, all the time, everywhere",
+"only by handwritten letters",
+"only once a month",
+"without digital devices",
+"only inside one classroom"
+],
+answers:[0],
+ru:"Gen C постоянно подключена к разным экранам и цифровым каналам.",
+kz:"Gen C әртүрлі экрандар мен цифрлық арналар арқылы үнемі байланыста болады.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"single",
+q:"8. Gen C has not abandoned traditional TV completely but has:",
+options:[
+"augmented it with shares, likes, comments and retweets",
+"destroyed all media",
+"stopped watching all content",
+"rejected online videos",
+"removed social interaction"
+],
+answers:[0],
+ru:"Gen C не полностью отказалась от телевидения, но дополнила его лайками, комментариями, репостами и онлайн-обсуждением.",
+kz:"Gen C дәстүрлі теледидардан толық бас тартпаған, бірақ оны лайк, пікір, бөлісу және онлайн талқылау арқылы толықтырған.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"single",
+q:"9. For Gen C, creating content includes:",
+options:[
+"creating something and sharing it",
+"only watching silently",
+"deleting all media",
+"avoiding self-expression",
+"rejecting online communities"
+],
+answers:[0],
+ru:"Для Gen C творчество состоит из создания контента и его распространения.",
+kz:"Gen C үшін шығармашылық контент жасаудан және оны басқалармен бөлісуден тұрады.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"single",
+q:"10. Knowledge is described as Gen C’s:",
+options:[
+"currency",
+"enemy",
+"obstacle",
+"weakness",
+"irrelevant habit"
+],
+answers:[0],
+ru:"В тексте знание описывается как «валюта» Gen C, то есть важнейший ресурс.",
+kz:"Мәтінде білім Gen C үшін «валюта» ретінде сипатталады, яғни ең маңызды ресурс болып саналады.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"single",
+q:"11. Gen C uses trusted advisors to:",
+options:[
+"navigate the media landscape",
+"avoid all knowledge",
+"stop online participation",
+"delete social networks",
+"reject information"
+],
+answers:[0],
+ru:"Gen C использует доверенные источники и советников, чтобы ориентироваться в медиа-пространстве.",
+kz:"Gen C медиа кеңістігінде дұрыс бағыт табу үшін сенімді дереккөздер мен кеңесшілерге сүйенеді.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"single",
+q:"12. YouTube is described as:",
+options:[
+"the voice of Gen C",
+"the end of digital culture",
+"only a traditional TV channel",
+"a printed newspaper",
+"a formal classroom only"
+],
+answers:[0],
+ru:"YouTube описывается как голос Gen C, потому что он объединяет развлечение, образование и самовыражение.",
+kz:"YouTube Gen C дауысы ретінде сипатталады, өйткені ол ойын-сауықты, білімді және өзін-өзі білдіруді біріктіреді.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"single",
+q:"13. Virtual reality is:",
+options:[
+"a virtual environment experienced as if one were really there",
+"only a printed picture",
+"only traditional classroom learning",
+"only radio communication",
+"absence of technology"
+],
+answers:[0],
+ru:"Virtual reality — это виртуальная среда, которую человек воспринимает так, будто он действительно находится внутри неё.",
+kz:"Виртуалды шындық дегеніміз — адам өзін сол жерде шынымен жүргендей сезінетін жасанды цифрлық орта.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"single",
+q:"14. Virtual reality uses:",
+options:[
+"a host of technologies to create immersive experience",
+"only paper materials",
+"no digital systems",
+"only ordinary photographs",
+"only grammar exercises"
+],
+answers:[0],
+ru:"Virtual reality использует комплекс технологий, чтобы создать эффект присутствия.",
+kz:"Виртуалды шындық адамға толық қатысу әсерін беру үшін түрлі технологияларды қолданады.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"single",
+q:"15. Virtual reality has:",
+options:[
+"both entertainment and serious uses",
+"only negative uses",
+"no future applications",
+"only printed uses",
+"no connection with communication"
+],
+answers:[0],
+ru:"Virtual reality может использоваться как для развлечения, так и для серьёзных целей: обучения, работы и коммуникации.",
+kz:"Виртуалды шындық ойын-сауық үшін де, білім беру, жұмыс және байланыс сияқты маңызды мақсаттар үшін де қолданыла алады.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"single",
+q:"16. Children’s exposure to tablets and computers is controversial because:",
+options:[
+"it may have both benefits and risks",
+"it has only benefits",
+"it has no influence",
+"it is always forbidden",
+"it removes all learning"
+],
+answers:[0],
+ru:"Использование детьми планшетов и компьютеров спорно, потому что оно может иметь и преимущества, и риски.",
+kz:"Балалардың планшет пен компьютер қолдануы даулы мәселе, себебі оның пайдалы жақтары да, қауіптері де бар.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"multiple",
+q:"17. Possible benefits of technology for children include:",
+options:[
+"problem-solving skills",
+"decision-making skills",
+"vocabulary development",
+"complete social isolation",
+"automatic addiction"
+],
+answers:[0,1,2],
+ru:"Технологии могут помогать детям развивать навыки решения проблем, принятия решений и словарный запас.",
+kz:"Технология балалардың мәселе шешу, шешім қабылдау және сөздік қорын дамыту дағдыларына көмектесе алады.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"multiple",
+q:"18. Possible risks of excessive technology use by children include:",
+options:[
+"reduced social interaction",
+"stress or addiction",
+"exposure to problematic content",
+"better face-to-face communication always",
+"automatic moral development"
+],
+answers:[0,1,2],
+ru:"Чрезмерное использование технологий детьми может снизить живое общение, вызвать стресс или зависимость и открыть доступ к проблемному контенту.",
+kz:"Балалардың технологияны шамадан тыс қолдануы тірі қарым-қатынасты азайтып, күйзеліс немесе тәуелділік тудыруы және зиянды мазмұнға жол ашуы мүмкін.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"single",
+q:"19. Video games may contribute to education when they:",
+options:[
+"develop problem-solving and decision-making skills",
+"replace all teachers",
+"remove creativity",
+"stop thinking",
+"prevent all learning"
+],
+answers:[0],
+ru:"Видеоигры могут способствовать обучению, если они развивают навыки решения проблем и принятия решений.",
+kz:"Видеоигілер мәселе шешу және шешім қабылдау дағдыларын дамытса, білім беруге пайдалы болуы мүмкін.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"single",
+q:"20. A major concern about children and video games is that some games may:",
+options:[
+"promote violent or sexist behaviour",
+"always teach ethics",
+"always improve social skills",
+"remove all risks",
+"guarantee academic success"
+],
+answers:[0],
+ru:"Одно из опасений связано с тем, что некоторые видеоигры могут поощрять агрессивное или сексистское поведение.",
+kz:"Кейбір видеоигілер агрессивті немесе жыныстық кемсітушілікке негізделген мінез-құлықты қалыптастыруы мүмкін деген қауіп бар.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"single",
+q:"21. Excessive screen time may reduce:",
+options:[
+"face-to-face social interaction",
+"only electricity bills",
+"all online risks",
+"all learning opportunities",
+"all technology use"
+],
+answers:[0],
+ru:"Чрезмерное экранное время может уменьшить живое общение ребёнка с другими людьми.",
+kz:"Экран алдында тым көп уақыт өткізу баланың адамдармен бетпе-бет қарым-қатынасын азайтуы мүмкін.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"single",
+q:"22. Traditional toys such as Lego may help develop:",
+options:[
+"creativity and motor skills",
+"only passive watching",
+"only online addiction",
+"only screen habits",
+"only violent behaviour"
+],
+answers:[0],
+ru:"Традиционные игрушки, например Lego, могут развивать креативность и моторные навыки.",
+kz:"Lego сияқты дәстүрлі ойыншықтар шығармашылық қабілет пен қимыл-қозғалыс дағдыларын дамытуға көмектеседі.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"single",
+q:"23. Visual culture refers to:",
+options:[
+"culture shaped by images, videos and visual media",
+"culture without images",
+"only oral traditions",
+"only handwritten texts",
+"only physical exercise"
+],
+answers:[0],
+ru:"Визуальная культура связана с изображениями, видео и визуальными медиа, которые влияют на восприятие людей.",
+kz:"Визуалды мәдениет адамдардың қабылдауына әсер ететін суреттер, бейнелер және көрнекі медиа арқылы қалыптасады.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"single",
+q:"24. Video consciousness can be understood as:",
+options:[
+"the influence of video-based media on perception and thinking",
+"absence of media influence",
+"only printed reading",
+"only grammar knowledge",
+"rejection of digital culture"
+],
+answers:[0],
+ru:"Video consciousness можно понимать как влияние видеомедиа на восприятие, мышление и поведение людей.",
+kz:"Бейнесана дегеніміз — бейнемедиа адамның қабылдауына, ойлауына және мінез-құлқына әсер етуі.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"single",
+q:"25. Digital culture is strongly connected with:",
+options:[
+"online communication, media sharing and technology use",
+"only ancient manuscripts",
+"only offline silence",
+"rejection of the Internet",
+"absence of social networks"
+],
+answers:[0],
+ru:"Цифровая культура связана с онлайн-коммуникацией, обменом медиа и использованием технологий.",
+kz:"Цифрлық мәдениет онлайн қарым-қатынас, медиа бөлісу және технологияны қолданумен тығыз байланысты.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"single",
+q:"26. Media literacy means:",
+options:[
+"the ability to understand, evaluate and use media critically",
+"watching videos without thinking",
+"believing every online source",
+"avoiding all information",
+"using only entertainment media"
+],
+answers:[0],
+ru:"Медиаграмотность — это способность понимать, оценивать и критически использовать медиа.",
+kz:"Медиасауаттылық дегеніміз — медианы түсіну, бағалау және сыни тұрғыдан қолдану қабілеті.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"single",
+q:"27. A media portal may include:",
+options:[
+"video blogs, podcasts, webinars and online conferences",
+"only printed dictionaries",
+"only handwritten essays",
+"only classroom walls",
+"only offline exams"
+],
+answers:[0],
+ru:"Медиа-портал может включать видеоблоги, подкасты, вебинары и онлайн-конференции.",
+kz:"Медиа-порталға видеоблогтар, подкасттар, вебинарлар және онлайн конференциялар кіруі мүмкін.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"single",
+q:"28. A podcast is:",
+options:[
+"an audio or video programme available online",
+"only a printed article",
+"only a classroom test",
+"only a handwritten note",
+"only an offline dictionary"
+],
+answers:[0],
+ru:"Podcast — это аудио- или видеопрограмма, доступная онлайн.",
+kz:"Подкаст дегеніміз — интернет арқылы қолжетімді аудио немесе бейне бағдарлама.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"single",
+q:"29. A webinar is:",
+options:[
+"an online seminar or presentation",
+"only a paper textbook",
+"only a physical classroom",
+"only a printed newspaper",
+"only a private diary"
+],
+answers:[0],
+ru:"Webinar — это онлайн-семинар или онлайн-презентация.",
+kz:"Вебинар дегеніміз — онлайн форматта өтетін семинар немесе таныстырылым.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"single",
+q:"30. Synchronous webinars happen:",
+options:[
+"in real time",
+"without any participants",
+"only through printed notes",
+"after all communication ends",
+"without internet"
+],
+answers:[0],
+ru:"Синхронные вебинары проходят в реальном времени.",
+kz:"Синхронды вебинарлар нақты уақыт режимінде өтеді.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"single",
+q:"31. Asynchronous online conferences allow participants to:",
+options:[
+"take part at different times",
+"meet only in one physical room",
+"avoid all digital communication",
+"use only printed posters",
+"delete all materials"
+],
+answers:[0],
+ru:"Асинхронные онлайн-конференции позволяют участникам участвовать в разное время.",
+kz:"Асинхронды онлайн конференциялар қатысушыларға әртүрлі уақытта қатысуға мүмкіндік береді.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"single",
+q:"32. Educational media should be assessed according to:",
+options:[
+"quality, relevance, language level and educational value",
+"colour only",
+"number of advertisements only",
+"random popularity only",
+"length only"
+],
+answers:[0],
+ru:"Образовательные медиа следует оценивать по качеству, актуальности, языковому уровню и образовательной ценности.",
+kz:"Білім беру медиасы сапасы, өзектілігі, тілдік деңгейі және білімдік құндылығы бойынша бағалануы керек.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"multiple",
+q:"33. Qualitative educational mass media should be:",
+options:[
+"relevant to learners’ level",
+"academically useful",
+"motivating",
+"misleading",
+"completely unrelated to education"
+],
+answers:[0,1,2],
+ru:"Качественные образовательные медиа должны соответствовать уровню учащихся, быть академически полезными и мотивирующими.",
+kz:"Сапалы білім беру медиасы білім алушының деңгейіне сай, академиялық тұрғыдан пайдалы және ынталандырушы болуы керек.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"single",
+q:"34. Online communication tools can support:",
+options:[
+"education, work, communication and collaboration",
+"only isolation",
+"only passive watching",
+"only printed homework",
+"only entertainment without learning"
+],
+answers:[0],
+ru:"Онлайн-коммуникационные инструменты могут поддерживать обучение, работу, общение и сотрудничество.",
+kz:"Онлайн байланыс құралдары білім алуды, жұмысты, қарым-қатынасты және бірлескен әрекетті қолдай алады.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"single",
+q:"35. A digital footprint means:",
+options:[
+"traces of a person’s activity online",
+"only a shoe mark",
+"offline handwriting",
+"printed passport",
+"school attendance only"
+],
+answers:[0],
+ru:"Цифровой след — это следы активности человека в интернете.",
+kz:"Цифрлық із дегеніміз — адамның интернеттегі әрекеттерінен қалған мәліметтер мен белгілер.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"single",
+q:"36. Online safety is important because:",
+options:[
+"users may face privacy, security and content risks",
+"the Internet has no risks",
+"all websites are always safe",
+"children never need guidance",
+"media cannot influence people"
+],
+answers:[0],
+ru:"Онлайн-безопасность важна, потому что пользователи могут столкнуться с рисками приватности, безопасности и вредного контента.",
+kz:"Онлайн қауіпсіздік маңызды, себебі пайдаланушылар жеке мәліметтер, қауіпсіздік және зиянды контентке байланысты қауіптерге тап болуы мүмкін.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"single",
+q:"37. Digital citizenship means:",
+options:[
+"responsible and ethical participation in digital spaces",
+"using the Internet without rules",
+"copying others’ work",
+"avoiding responsibility online",
+"ignoring online behaviour"
+],
+answers:[0],
+ru:"Цифровое гражданство означает ответственное и этичное участие в цифровом пространстве.",
+kz:"Цифрлық азаматтық дегеніміз — цифрлық кеңістікте жауапты әрі әдепті түрде қатысу.",
+source:"POFLIC, Unit 5.2"
+},
+{
+type:"single",
+q:"38. The phrase “technology is a tool” means:",
+options:[
+"technology supports learning but does not replace good teaching",
+"technology is more important than teachers always",
+"teachers are unnecessary",
+"learning does not need people",
+"all education must be automatic"
+],
+answers:[0],
+ru:"Фраза означает, что технологии помогают обучению, но не заменяют роль хорошего преподавателя.",
+kz:"Бұл тіркес технология оқуға көмектесетін құрал екенін, бірақ жақсы мұғалімді толық алмастыра алмайтынын білдіреді.",
+source:"POFLIC, Unit 5.1 / Unit 5.2"
+},
+{
+type:"single",
+q:"39. “Online learning is not the next big thing, it is the now big thing” means:",
+options:[
+"online learning is already important today",
+"online learning will never be used",
+"online learning belongs only to the past",
+"online learning is irrelevant",
+"online learning should be banned"
+],
+answers:[0],
+ru:"Эта цитата означает, что онлайн-обучение уже сейчас является важной частью образования.",
+kz:"Бұл дәйексөз онлайн оқытудың болашақтағы ғана емес, қазіргі кездегі де маңызды құбылыс екенін білдіреді.",
+source:"POFLIC, Unit 5.1 / Unit 5.2"
+},
+{
+type:"single",
+q:"40. A balanced view of children and technology means recognizing:",
+options:[
+"both educational opportunities and possible risks",
+"only benefits",
+"only dangers",
+"no influence at all",
+"technology as useless"
+],
+answers:[0],
+ru:"Сбалансированный взгляд означает признание как образовательных возможностей технологий, так и возможных рисков.",
+kz:"Технологияға қатысты теңгерімді көзқарас оның білім беру мүмкіндіктерін де, ықтимал қауіптерін де мойындауды білдіреді.",
+source:"POFLIC, Unit 5.2"
+}
+]
+}
+ };
+
+function renderUnit(unitKey){
+  const unit = DATA[unitKey];
+  const container = document.getElementById("quiz-" + unitKey);
+
+  container.innerHTML = unit.questions.map((q, qi) => {
+    const inputType = q.type === "multiple" ? "checkbox" : "radio";
+
+    const optionsHTML = q.options.map((opt, oi) => `
+      <label class="option">
+        <input type="${inputType}" name="${unitKey}-q${qi}" value="${oi}">
+        ${String.fromCharCode(65 + oi)}) ${opt}
+      </label>
+    `).join("");
+
+    return `
+      <div class="question">
+        <div class="qtype">${q.type === "multiple" ? "Multiple answers" : "Single answer"}</div>
+        <div class="question-title">${q.q}</div>
+        ${optionsHTML}
+      </div>
+    `;
+  }).join("");
+}
+
+function checkUnit(unitKey){
+  const unit = DATA[unitKey];
+  const resultBox = document.getElementById("result-" + unitKey);
+
+  let score = 0;
+  let output = "";
+
+  unit.questions.forEach((q, qi) => {
+    const selected = [...document.querySelectorAll(`input[name="${unitKey}-q${qi}"]:checked`)]
+      .map(input => Number(input.value))
+      .sort((a,b) => a-b);
+
+    const correct = [...q.answers].sort((a,b) => a-b);
+
+    const isCorrect =
+      selected.length === correct.length &&
+      selected.every((value, index) => value === correct[index]);
+
+    if(isCorrect){
+      score++;
+    }
+
+    const selectedText = selected.length
+      ? selected.map(i => `${String.fromCharCode(65+i)}) ${q.options[i]}`).join("<br>")
+      : "No answer selected";
+
+    const correctText = correct
+      .map(i => `${String.fromCharCode(65+i)}) ${q.options[i]}`)
+      .join("<br>");
+
+    output += `
+      <div class="answer-card ${isCorrect ? "correct" : "wrong"}">
+        <div><b>${q.q}</b></div>
+
+        <div class="${isCorrect ? "correct-text" : "wrong-text"}">
+          ${isCorrect ? "Correct" : "Wrong"}
+        </div>
+
+        <div class="explain">
+          <b>Your answer:</b><br>
+          ${selectedText}
+        </div>
+
+        <div class="explain">
+          <b>Correct answer:</b><br>
+          ${correctText}
+        </div>
+
+        <div class="explain">
+          <b>Explanation RU:</b> ${q.ru}<br>
+          <b>Explanation KZ:</b> ${q.kz}
+        </div>
+
+        <span class="source">Source: ${q.source}</span>
+      </div>
+    `;
+  });
+
+  const percent = Math.round((score / unit.questions.length) * 100);
+
+  resultBox.innerHTML = `
+    <div class="summary">
+      <h3>${score} / ${unit.questions.length} correct</h3>
+      <p>Your result: <b>${percent}%</b></p>
+    </div>
+    ${output}
+  `;
+
+  resultBox.scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
+}
+
+Object.keys(DATA).forEach(renderUnit);
+
+document.addEventListener("contextmenu", function(e){
+  e.preventDefault();
+});
+
+document.addEventListener("keydown", function(e){
+  if(
+    e.key === "F12" ||
+    (e.ctrlKey && e.shiftKey && ["I","J","C"].includes(e.key.toUpperCase())) ||
+    (e.ctrlKey && ["U","S","P"].includes(e.key.toUpperCase()))
+  ){
+    e.preventDefault();
+  }
+});
+</script>
+
+</body>
+</html> 
