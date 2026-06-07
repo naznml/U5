@@ -1696,6 +1696,11 @@ function checkUnit(unitKey){
 }
 
 document.addEventListener("contextmenu", function(e){
+  Object.keys(DATA).forEach(renderUnit);
+
+document.addEventListener("contextmenu", function(e){
+  e.preventDefault();
+});
   e.preventDefault();
 });
 
