@@ -286,6 +286,10 @@ body.protected{
     font-size:14px;
   }
 }
+
+.option.correct-option{background:#dcfce7;border-color:#22c55e;}
+.option.wrong-option{background:#ffe4e6;border-color:#fb7185;}
+.detail-block{background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:12px;margin-top:10px;}
 </style>
 </head>
 
@@ -297,11 +301,40 @@ body.protected{
 </section>
 
 <nav class="unit-nav">
+  <a href="#keypoints-section">Key points</a>
   <a href="#unit51-section">Unit 5.1</a>
   <a href="#unit52-section">Unit 5.2</a>
 </nav>
 
 <main class="wrapper">
+<section class="unit-card" id="keypoints-section">
+  <div class="unit-header">
+    <div>
+      <h2>Маңызды ұғымдар / Важные понятия</h2>
+      <p class="unit-description">Unit 5 бойынша негізгі ұғымдар: Smart Education, e-learning, distance learning, LMS, MOOC, MOODLE, Gen C, virtual reality, digital culture, media literacy, online safety.</p>
+    </div>
+    <span class="badge">Key points</span>
+  </div>
+  <div class="question">
+    <div class="question-title">Unit 5.1 — Smart-Education and e-Learning Technologies</div>
+    <ul>
+      <li><b>Smart Education</b> — advanced technologies арқылы оқу сапасын, байланыс пен feedback жақсарту.</li>
+      <li><b>E-learning</b> — electronic media арқылы оқыту; asynchronous және synchronous formats.</li>
+      <li><b>LMS / MOODLE / MOOC</b> — онлайн курстарды басқару, ашық оқу және learning tracking.</li>
+      <li><b>Gamification / mLearning / blended learning</b> — оқу мотивациясын, қолжетімділігін және форматтарын кеңейту.</li>
+    </ul>
+  </div>
+  <div class="question">
+    <div class="question-title">Unit 5.2 — New Media, Gen C, Virtual Reality and Digital Culture</div>
+    <ul>
+      <li><b>Gen C</b> — Connection, Community, Creation, Curation; digital lifestyle.</li>
+      <li><b>Virtual Reality</b> — immersive experience, entertainment және serious uses.</li>
+      <li><b>Children and technology</b> — educational opportunities және possible risks.</li>
+      <li><b>Media literacy / digital citizenship</b> — online information-ды critical evaluation және responsible participation.</li>
+    </ul>
+  </div>
+</section>
+
 
 <section class="unit-card" id="unit51-section">
   <div class="unit-header">
@@ -315,7 +348,7 @@ body.protected{
   </div>
 
   <div id="quiz-unit51"></div>
-  <button class="btn" onclick="checkUnit('unit51')">Show result / Показать результат</button>
+  <button class="btn" data-check-unit="unit51">Show result / Показать результат</button>
   <div id="result-unit51" class="result"></div>
 </section>
 
@@ -331,7 +364,7 @@ body.protected{
   </div>
 
   <div id="quiz-unit52"></div>
-  <button class="btn" onclick="checkUnit('unit52')">Show result / Показать результат</button>
+  <button class="btn" data-check-unit="unit52">Show result / Показать результат</button>
   <div id="result-unit52" class="result"></div>
 </section>
 
@@ -1637,9 +1670,48 @@ function answerText(q,arr){
     .join("<br>");
 }
 
+function correctAnswerText(q){
+  return q.renderedAnswers.map(i=>`${letter(i)}) ${q.renderedOptions[i]}`).join("<br>");
+}
+
+function clearHighlights(unitKey){
+  document.querySelectorAll(`#quiz-${unitKey} .option`).forEach(el=>{
+    el.classList.remove("correct-option","wrong-option");
+  });
+}
+
+function highlightQuestion(unitKey, qi, selected, correctAnswers){
+  const qBox = document.querySelectorAll(`#quiz-${unitKey} .question`)[qi];
+  if(!qBox) return;
+  qBox.querySelectorAll(".option").forEach(label=>{
+    const input = label.querySelector("input");
+    const idx = Number(input.value);
+    if(correctAnswers.includes(idx)) label.classList.add("correct-option");
+    if(selected.includes(idx) && !correctAnswers.includes(idx)) label.classList.add("wrong-option");
+  });
+}
+
+function makeSimpleSynonyms(correctText){
+  const clean = correctText.replace(/^[A-H]\)\s*/, "").trim();
+  const map = {
+    "learning":"study process — оқу үдерісі / учебный процесс; knowledge acquisition — білім меңгеру / приобретение знаний",
+    "tablet PCs":"learning tablets — оқу планшеттері / учебные планшеты; portable computers — тасымалды компьютерлер / портативные компьютеры",
+    "students":"learners — білім алушылар / учащиеся; pupils — оқушылар / школьники",
+    "Gen C":"connected generation — байланысқан ұрпақ / связанное поколение; content generation — контент ұрпағы / поколение контента",
+    "Virtual reality":"immersive technology — ену технологиясы / иммерсивная технология; simulated environment — модельденген орта / смоделированная среда",
+    "risks":"possible dangers — ықтимал қауіптер / возможные опасности; negative outcomes — теріс нәтижелер / негативные результаты",
+    "media":"visual channels — визуалды арналар / визуальные каналы; screen media — экрандық медиа / экранные медиа",
+    "online":"on the internet — интернетте / в интернете; digitally — цифрлық түрде / цифровым способом",
+    "collaboration":"teamwork — командалық жұмыс / командная работа; joint effort — бірлескен күш / совместные усилия",
+    "Digital citizenship":"ethical online conduct — онлайндағы әдепті мінез-құлық / этичное поведение онлайн"
+  };
+  return map[clean] || "related term — байланысты термин / связанный термин; close meaning — жақын мағына / близкое значение";
+}
+
 function checkUnit(unitKey){
   const unit = DATA[unitKey];
   const resultBox = document.getElementById("result-" + unitKey);
+  clearHighlights(unitKey);
 
   let score = 0;
   let output = "";
@@ -1648,30 +1720,41 @@ function checkUnit(unitKey){
     const selected = getSelected(unitKey,qi);
     const correctAnswers = q.renderedAnswers;
     const isCorrect = arraysEqual(selected,correctAnswers);
-
     if(isCorrect) score++;
+    highlightQuestion(unitKey, qi, selected, correctAnswers);
+
+    const correct = correctAnswerText(q);
 
     output += `
       <div class="answer-card ${isCorrect ? "correct" : "wrong"}">
         <div><b>${qi + 1}. ${q.q.replace(/^\d+\.\s*/, "")}</b></div>
-
         <div class="${isCorrect ? "correct-text" : "wrong-text"}">
-          ${isCorrect ? "Correct" : "Wrong"}
+          ${isCorrect ? "Correct / Дұрыс / Правильно" : "Wrong / Қате / Неправильно"}
+        </div>
+
+        <div class="detail-block">
+          <b>Correct answer / Дұрыс жауап / Правильный ответ:</b><br>
+          ${correct}
+        </div>
+
+        <div class="detail-block">
+          <b>Definition KZ:</b> ${q.kz}<br>
+          <b>Definition RU:</b> ${q.ru}
+        </div>
+
+        <div class="detail-block">
+          <b>Why / Неге / Почему:</b><br>
+          Бұл жауап сөйлемдегі негізгі ұғымды дәл толықтырады. / Этот ответ точно завершает смысл вопроса и соответствует материалу Unit 5.
+        </div>
+
+        <div class="detail-block">
+          <b>Synonyms / Синонимдер / Синонимы:</b><br>
+          ${makeSimpleSynonyms(correct)}
         </div>
 
         <div class="explain">
           <b>Your answer:</b><br>
           ${answerText(q,selected)}
-        </div>
-
-        <div class="explain">
-          <b>Correct answer:</b><br>
-          ${answerText(q,correctAnswers)}
-        </div>
-
-        <div class="explain">
-          <b>Explanation RU:</b> ${q.ru}<br>
-          <b>Explanation KZ:</b> ${q.kz}
         </div>
 
         <span class="source">Source: ${q.source}</span>
@@ -1689,13 +1772,15 @@ function checkUnit(unitKey){
     ${output}
   `;
 
-  resultBox.scrollIntoView({
-    behavior:"smooth",
-    block:"start"
-  });
+  resultBox.scrollIntoView({ behavior:"smooth", block:"start" });
 }
 
+
 Object.keys(DATA).forEach(renderUnit);
+
+document.querySelectorAll("[data-check-unit]").forEach(btn=>{
+  btn.addEventListener("click", ()=>checkUnit(btn.dataset.checkUnit));
+});
 
 document.addEventListener("contextmenu", function(e){
   e.preventDefault();
